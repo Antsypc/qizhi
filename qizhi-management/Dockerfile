@@ -63,11 +63,9 @@ RUN apt-get -y update && \
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # Only node manager need this.#
-#COPY docker-17.06.2-ce.tgz /usr/local
-RUN wget https://download.docker.com/linux/static/stable/x86_64/docker-17.06.2-ce.tgz
-RUN cp docker-17.06.2-ce.tgz /usr/local
-RUN tar xzvf /usr/local/docker-17.06.2-ce.tgz
-
+#COPY docker-18.06.1-ce.tgz /usr/local
+RUN curl -SL https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable/x86_64/docker-18.06.1-ce.tgz \
+    | tar xzC /usr/local
 COPY container-setup.sh /
 
 CMD ["/container-setup.sh"]
