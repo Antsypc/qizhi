@@ -27,14 +27,4 @@
 
 mkdir -p ~/.kube
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-
-chmod +x ./kubectl
-
-pathofusllocalbin="/usr/local/bin"
-[[ -d "$staticpod" ]] ||
-{
-    mkdir -p /usr/local/bin
-}
-
-mv ./kubectl /usr/local/bin/kubectl
+apt-get update && apt-get install -y kubectl
